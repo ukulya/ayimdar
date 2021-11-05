@@ -14,7 +14,7 @@ fun main(){
     when(operator){
         "+" -> println(a1+a2)
         "-" -> println(a1-a2)
-        "/" -> println(a1/a2)
+        "/" -> println(a1/a2) // падает с ошибкой при делении на 0
         "*" -> println(a1*a2)
         else ->{
             println("неправильный оператор")

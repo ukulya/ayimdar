@@ -16,32 +16,30 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var txtView: TextView
-    private lateinit var rootLayout: ConstraintLayout
+    var counter = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         txtView = findViewById(R.id.text)
-        rootLayout = findViewById(R.id.root_layout)
+
 
         val btn1 = findViewById<AppCompatButton>(R.id.btn1)
         val btn2 = findViewById<AppCompatButton>(R.id.btn2)
-        val btn3 = findViewById<AppCompatButton>(R.id.btn3)
+
 
         btn1.setOnClickListener {
-            txtView.text = "RED"
-            rootLayout.setBackgroundColor(Color.RED)
+            txtView.text = counter++.toString()
+
         }
 
         btn2.setOnClickListener {
-            txtView.text = "YELLOW"
-            rootLayout.setBackgroundColor(Color.YELLOW)
+            txtView.text = "0"
+            counter = 1
         }
 
-        btn3.setOnClickListener {
-            txtView.text = "GREEN"
-            rootLayout.setBackgroundColor(Color.GREEN)
-        }
+
 
     }
 }

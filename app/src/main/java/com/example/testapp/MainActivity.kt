@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var txtView: TextView
-    var counter = 1
+    var counter = 1 // если перевернуть экран, значение сохранится ?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

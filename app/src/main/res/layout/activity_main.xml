@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_layout">
+    
+    <!-- hw-12: все текста желательно в стринги вынести -->
 
     <TextView
         android:layout_width="match_parent"
@@ -40,6 +42,7 @@
             android:layout_weight="1"
             android:gravity="center">
 
+            <!-- onClick-аттрибут уже деприкэйтет, давай клики все таки по другому обрабатывать -->
             <Button
                 android:text="7"
                 android:background="@drawable/button"

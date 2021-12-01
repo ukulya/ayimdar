@@ -16,19 +16,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import net.objecthunter.exp4j.ExpressionBuilder
+// куча лишних импортов
 
 class MainActivity : AppCompatActivity() {
     // TextView used to display the input and output
-    lateinit var txtInput: TextView
+    lateinit var txtInput: TextView // private
 
     // Represent whether the lastly pressed key is numeric or not
-    var lastNumeric: Boolean = false
+    var lastNumeric: Boolean = false // private
 
     // Represent that current state is in error or not
-    var stateError: Boolean = false
+    var stateError: Boolean = false // private
 
     // If true, do not allow to add another DOT
-    var lastDot: Boolean = false
+    var lastDot: Boolean = false // private
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                 lastDot = true // Result contains a dot
             } catch (ex: ArithmeticException) {
                 // Display an error message
-                txtInput.text = "Error"
+                txtInput.text = "Error" // при делении на 0, покажет просто Error
                 stateError = true
                 lastNumeric = false
             }

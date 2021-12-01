@@ -13,6 +13,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import java.lang.Exception
 
+// краш на старте
+
 class MainActivity : AppCompatActivity() {
 
     val email = findViewById<AppCompatEditText>(R.id.email)

@@ -7,14 +7,9 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.ViewCompat.setBackground
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+    //private val presenter = Presenter()
     private lateinit var txtView: TextView
     var counter = 1
 
@@ -30,7 +25,9 @@ class MainActivity : AppCompatActivity() {
 
 
         btn1.setOnClickListener {
+
             txtView.text = counter++.toString()
+            //presenter.onScreenTurned(txtView.text)
 
         }
 
@@ -41,5 +38,15 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("key", txtView.text as String?)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        txtView.text = savedInstanceState.getString("key")
     }
 }

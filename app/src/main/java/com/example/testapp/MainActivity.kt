@@ -1,7 +1,5 @@
 package com.example.testapp
 
-import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,42 +16,75 @@ import androidx.recyclerview.widget.RecyclerView
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
-    // TextView used to display the input and output
-    lateinit var txtInput: TextView
+    private lateinit var txtInput: TextView
 
-    // Represent whether the lastly pressed key is numeric or not
-    var lastNumeric: Boolean = false
+    private var lastNumeric: Boolean = false
 
-    // Represent that current state is in error or not
-    var stateError: Boolean = false
+    private var stateError: Boolean = false
 
-    // If true, do not allow to add another DOT
-    var lastDot: Boolean = false
+    private var lastDot: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         txtInput = findViewById(R.id.txtInput)
+
+        val btnOne = findViewById<Button>(R.id.btnOne)
+        val btnTwo = findViewById<Button>(R.id.btnTwo)
+        val btnThree = findViewById<Button>(R.id.btnThree)
+        val btnFour = findViewById<Button>(R.id.btnFour)
+        val btnFive = findViewById<Button>(R.id.btnFive)
+        val btnSix = findViewById<Button>(R.id.btnSix)
+        val btnSeven = findViewById<Button>(R.id.btnSeven)
+        val btnEight = findViewById<Button>(R.id.btnEight)
+        val btnNine = findViewById<Button>(R.id.btnNine)
+        val btnZero = findViewById<Button>(R.id.btnZero)
+        btnOne.setOnClickListener { onDigit(btnOne) }
+        btnTwo.setOnClickListener { onDigit(btnTwo) }
+        btnThree.setOnClickListener { onDigit(btnThree) }
+        btnFour.setOnClickListener { onDigit(btnFour) }
+        btnFive.setOnClickListener { onDigit(btnFive) }
+        btnSix.setOnClickListener { onDigit(btnSix) }
+        btnSeven.setOnClickListener { onDigit(btnSeven) }
+        btnEight.setOnClickListener { onDigit(btnEight) }
+        btnNine.setOnClickListener { onDigit(btnNine) }
+        btnZero.setOnClickListener { onDigit(btnZero) }
+
+        val btnAdd = findViewById<Button>(R.id.btnAdd)
+        val btnSubtract = findViewById<Button>(R.id.btnSubtract)
+        val btnMultiply = findViewById<Button>(R.id.btnMultiply)
+        val btnDivide = findViewById<Button>(R.id.btnDivide)
+        btnAdd.setOnClickListener { onOperator(btnAdd) }
+        btnSubtract.setOnClickListener { onOperator(btnSubtract) }
+        btnMultiply.setOnClickListener { onOperator(btnMultiply) }
+        btnDivide.setOnClickListener { onOperator(btnDivide) }
+
+        val btnDecimal = findViewById<Button>(R.id.btnDecimal)
+        btnDecimal.setOnClickListener { onDecimalPoint(btnDecimal) }
+
+        val btnClear = findViewById<Button>(R.id.btnClear)
+        btnClear.setOnClickListener { onClear(btnClear) }
+
+        val btnEqual = findViewById<Button>(R.id.btnEqual)
+        btnEqual.setOnClickListener { onEqual(btnEqual) }
     }
-    /**
-    * Append the Button.text to the TextView
-    */
+
+    /*override fun onClick(v: View) {
+        when (v.id) {
+            R.id.btnOne -> {}
+        }
+    }*/
+
     fun onDigit(view: View) {
         if (stateError) {
-            // If current state is Error, replace the error message
             txtInput.text = (view as Button).text
             stateError = false
         } else {
-            // If not, already there is a valid expression so append to it
             txtInput.append((view as Button).text)
         }
-        // Set the flag
         lastNumeric = true
     }
 
-    /**
-     * Append . to the TextView
-     */
     fun onDecimalPoint(view: View) {
         if (lastNumeric && !stateError && !lastDot) {
             txtInput.append(".")
@@ -62,21 +93,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Append +,-,*,/ operators to the TextView
-     */
     fun onOperator(view: View) {
         if (lastNumeric && !stateError) {
             txtInput.append((view as Button).text)
             lastNumeric = false
-            lastDot = false    // Reset the DOT flag
+            lastDot = false
         }
     }
 
-
-    /**
-     * Clear the TextView
-     */
     fun onClear(view: View) {
         this.txtInput.text = ""
         lastNumeric = false
@@ -84,25 +108,17 @@ class MainActivity : AppCompatActivity() {
         lastDot = false
     }
 
-    /**
-     * Calculate the output using Exp4j
-     */
     fun onEqual(view: View) {
-        // If the current state is error, nothing to do.
-        // If the last input is a number only, solution can be found.
         if (lastNumeric && !stateError) {
-            // Read the expression
             val txt = txtInput.text.toString()
-            // Create an Expression (A class from exp4j library)
             val expression = ExpressionBuilder(txt).build()
             try {
-                // Calculate the result and display
                 val result = expression.evaluate()
                 txtInput.text = result.toString()
-                lastDot = true // Result contains a dot
+                lastDot = true
             } catch (ex: ArithmeticException) {
-                // Display an error message
-                txtInput.text = "Error"
+//                txtInput.text = ex.toString()
+                txtInput.text = "На ноль делить нельзя"
                 stateError = true
                 lastNumeric = false
             }

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class Fragment1: Fragment(R.layout.fragment1) {
+class Fragment2: Fragment(R.layout.fragment1) {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -14,5 +14,4 @@ class Fragment1: Fragment(R.layout.fragment1) {
     ): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
-
 }

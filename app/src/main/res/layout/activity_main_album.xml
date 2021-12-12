@@ -7,16 +7,14 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_container_1"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <androidx.fragment.app.FragmentContainerView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_container_2"
-        app:layout_constraintLeft_toRightOf="@+id/fragment_container_1"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container_1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

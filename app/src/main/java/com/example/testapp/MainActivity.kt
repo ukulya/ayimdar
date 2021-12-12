@@ -14,29 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val item = findViewById<AppCompatButton>(R.id.btn_1)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container_1, Fragment1())
+            .add(R.id.fragment_container_2, Fragment2())
+            .commit()
 
-        val recycler = findViewById<RecyclerView>(R.id.recycler)
-        val layoutManager = LinearLayoutManager(this)
-        val adapter = SimpleAdapter {
-            Toast.makeText(this, "ITEM -$it", Toast.LENGTH_SHORT).show()
-            goTo(it)
-        }
-
-        recycler.layoutManager = layoutManager
-        recycler.adapter = adapter
-        recycler.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
-
-        val list = mutableListOf<String>()
-        for (i in 0..20) {
-            list.add("ITEM -$i")
-        }
-        adapter.setData(list)
     }
 
-    private fun goTo(position: Int) {
-        val intent = Intent(this,MainActivity2::class.java) // явный - явно указываем; неявный - через manifest
-        intent.putExtra("item", position) // ключ - значение
-        startActivity(intent)
-    }
 }

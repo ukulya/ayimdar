@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat.setBackground
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testapp.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -24,56 +25,35 @@ class MainActivity : AppCompatActivity() {
 
     private var lastDot: Boolean = false
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        //setContentView(R.layout.activity_main)
         txtInput = findViewById(R.id.txtInput)
 
-        val btnOne = findViewById<Button>(R.id.btnOne)
-        val btnTwo = findViewById<Button>(R.id.btnTwo)
-        val btnThree = findViewById<Button>(R.id.btnThree)
-        val btnFour = findViewById<Button>(R.id.btnFour)
-        val btnFive = findViewById<Button>(R.id.btnFive)
-        val btnSix = findViewById<Button>(R.id.btnSix)
-        val btnSeven = findViewById<Button>(R.id.btnSeven)
-        val btnEight = findViewById<Button>(R.id.btnEight)
-        val btnNine = findViewById<Button>(R.id.btnNine)
-        val btnZero = findViewById<Button>(R.id.btnZero)
-        btnOne.setOnClickListener { onDigit(btnOne) }
-        btnTwo.setOnClickListener { onDigit(btnTwo) }
-        btnThree.setOnClickListener { onDigit(btnThree) }
-        btnFour.setOnClickListener { onDigit(btnFour) }
-        btnFive.setOnClickListener { onDigit(btnFive) }
-        btnSix.setOnClickListener { onDigit(btnSix) }
-        btnSeven.setOnClickListener { onDigit(btnSeven) }
-        btnEight.setOnClickListener { onDigit(btnEight) }
-        btnNine.setOnClickListener { onDigit(btnNine) }
-        btnZero.setOnClickListener { onDigit(btnZero) }
-
-        val btnAdd = findViewById<Button>(R.id.btnAdd)
-        val btnSubtract = findViewById<Button>(R.id.btnSubtract)
-        val btnMultiply = findViewById<Button>(R.id.btnMultiply)
-        val btnDivide = findViewById<Button>(R.id.btnDivide)
-        btnAdd.setOnClickListener { onOperator(btnAdd) }
-        btnSubtract.setOnClickListener { onOperator(btnSubtract) }
-        btnMultiply.setOnClickListener { onOperator(btnMultiply) }
-        btnDivide.setOnClickListener { onOperator(btnDivide) }
-
-        val btnDecimal = findViewById<Button>(R.id.btnDecimal)
-        btnDecimal.setOnClickListener { onDecimalPoint(btnDecimal) }
-
-        val btnClear = findViewById<Button>(R.id.btnClear)
-        btnClear.setOnClickListener { onClear(btnClear) }
-
-        val btnEqual = findViewById<Button>(R.id.btnEqual)
-        btnEqual.setOnClickListener { onEqual(btnEqual) }
+        binding.btnOne.setOnClickListener { onDigit(binding.btnOne) }
+        binding.btnTwo.setOnClickListener { onDigit(binding.btnTwo) }
+        binding.btnThree.setOnClickListener { onDigit(binding.btnThree) }
+        binding.btnFour.setOnClickListener { onDigit(binding.btnFour) }
+        binding.btnFive.setOnClickListener { onDigit(binding.btnFive) }
+        binding.btnSix.setOnClickListener { onDigit(binding.btnSix) }
+        binding.btnSeven.setOnClickListener { onDigit(binding.btnSeven) }
+        binding.btnEight.setOnClickListener { onDigit(binding.btnEight) }
+        binding.btnNine.setOnClickListener { onDigit(binding.btnNine) }
+        binding.btnZero.setOnClickListener { onDigit(binding.btnZero) }
+        binding.btnAdd.setOnClickListener { onOperator(binding.btnAdd) }
+        binding.btnSubtract.setOnClickListener { onOperator(binding.btnSubtract) }
+        binding.btnMultiply.setOnClickListener { onOperator(binding.btnMultiply) }
+        binding.btnDivide.setOnClickListener { onOperator(binding.btnDivide) }
+        binding.btnDecimal.setOnClickListener { onDecimalPoint(binding.btnDecimal) }
+        binding.btnClear.setOnClickListener { onClear(binding.btnClear) }
+        binding.btnEqual.setOnClickListener { onEqual(binding.btnEqual) }
     }
 
-    /*override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btnOne -> {}
-        }
-    }*/
 
     fun onDigit(view: View) {
         if (stateError) {

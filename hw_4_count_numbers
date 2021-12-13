@@ -9,6 +9,6 @@
  */
 fun main(){
     val x1 = readLine()
-    val res = x1.toString().length
+    val res = x1.toString().length // * Использовать операции со строками в этой задаче запрещается.
     println("кол-во цифр = $res")
 }

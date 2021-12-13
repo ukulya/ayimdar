@@ -1,18 +1,18 @@
 package com.example.testapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.AppCompatTextView
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(),OnButtonClicked {
+    private lateinit var txt1: AppCompatTextView
+    private lateinit var txt2: AppCompatTextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //txt1 = findViewById(R.id.frg1_txt)
+        //txt2 = findViewById(R.id.frg2_txt)
 
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container_1, Fragment1())
@@ -20,5 +20,14 @@ class MainActivity : AppCompatActivity() {
             .commit()
 
     }
+    override fun onButtonClicked(enteredText: String,action: String) {
+        if (action === "fr1"){
+            val fr2 = supportFragmentManager.findFragmentById(R.id.fragment_container_2) as Fragment2
+            fr2.setText(enteredText)
+        } else {
+            val fr1 = supportFragmentManager.findFragmentById(R.id.fragment_container_1) as Fragment1
+            fr1.setText(enteredText)
+        }
 
+    }
 }

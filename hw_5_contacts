@@ -47,7 +47,7 @@ fun main(){
     val x = readLine()!!.toInt()
     println("вы ввели $x")
 
-    val list: MutableList<String> = ArrayList()
+    val list: MutableList<String> = ArrayList() // нужно исп-ть мапу
 
     for (i in 1..x) {
 

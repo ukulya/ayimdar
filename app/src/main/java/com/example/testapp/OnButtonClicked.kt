@@ -1,6 +1,8 @@
 package com.example.testapp
 
+import android.graphics.drawable.Drawable
+
 interface OnButtonClicked {
 
-    fun onButtonClicked(enteredText: String)
+    fun onButtonClicked(imgUrl: Int)
 }

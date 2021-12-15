@@ -1,17 +1,26 @@
 package com.example.testapp
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 
 class Fragment2: Fragment(R.layout.fragment2) {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    private lateinit var listener: OnButtonClicked
+    private lateinit var img: AppCompatImageView
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as OnButtonClicked
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        img = view.findViewById(R.id.imgview)
+    }
+
+    fun setImgSrc(imgUrl: Int) {
+        img.setImageResource(imgUrl)
     }
 }

@@ -1,5 +1,7 @@
 package com.example.testapp
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,24 +11,33 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 
 class Fragment1: Fragment(R.layout.fragment1) {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    private lateinit var listener: OnButtonClicked
+    private lateinit var btn1: AppCompatButton
+    private lateinit var btn2: AppCompatButton
+    private lateinit var btn3: AppCompatButton
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as OnButtonClicked
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<AppCompatButton>(R.id.btn1).setOnClickListener{
-            view.findViewById<AppCompatImageView>(R.id.imgview).setImageResource(R.drawable.fb)
+
+        btn1 = view.findViewById(R.id.btn1)
+        btn2 = view.findViewById(R.id.btn2)
+        btn3 = view.findViewById(R.id.btn3)
+
+        btn1.setOnClickListener {
+           listener.onButtonClicked(R.drawable.ig)
         }
-        view.findViewById<AppCompatButton>(R.id.btn2).setOnClickListener{
-            view.findViewById<AppCompatImageView>(R.id.imgview).setImageResource(R.drawable.ig)
+        btn2.setOnClickListener {
+            listener.onButtonClicked(R.drawable.fb)
         }
-        view.findViewById<AppCompatButton>(R.id.btn3).setOnClickListener{
-            view.findViewById<AppCompatImageView>(R.id.imgview).setImageResource(R.drawable.wa)
+        btn3.setOnClickListener {
+            listener.onButtonClicked(R.drawable.wa)
         }
+
     }
+
 }

@@ -28,7 +28,7 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
         val layoutManager = LinearLayoutManager(requireContext())
         val adapter = SimpleAdapter {
             Toast.makeText(requireContext(), "ITEM -$it", Toast.LENGTH_SHORT).show()
-            listener.onClick("$it")
+            listener.onClick("ITEM $it")
         }
         // интент неявный
             // кнопка - открыть неявный интент - и передать в активити тот же текст

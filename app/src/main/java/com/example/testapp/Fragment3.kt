@@ -22,7 +22,7 @@ class Fragment3 : Fragment(R.layout.fragment3) {
         }*/
         toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
-                R.id.item2 -> requireActivity().supportFragmentManager.beginTransaction()
+                R.id.item2 -> requireActivity().supportFragmentManager.beginTransaction() // -> onBackPressed()
                     .replace(R.id.fragment_container, Fragment2())
                     .addToBackStack(null)
                     .commit()

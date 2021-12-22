@@ -17,15 +17,9 @@ class Fragment3 : Fragment(R.layout.fragment3) {
         toolbar = view.findViewById(R.id.toolbar)
         toolbar.inflateMenu(R.menu.menu3)
 
-        /*toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed()
-        }*/
         toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
-                R.id.item2 -> requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, Fragment2())
-                    .addToBackStack(null)
-                    .commit()
+                R.id.item2 -> requireActivity().onBackPressed()
             }
             true
 

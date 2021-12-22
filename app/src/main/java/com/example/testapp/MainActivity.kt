@@ -17,9 +17,6 @@ class MainActivity : AppCompatActivity(),OnFragmentClickListener{
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, Fragment1())
             .commit()
-
-
-
     }
     override fun onClick() {
         val fragment2 = Fragment2()

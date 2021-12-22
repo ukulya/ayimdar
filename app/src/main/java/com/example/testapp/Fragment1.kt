@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class Fragment1: Fragment(R.layout.fragment1) {
 
-    private lateinit var emailInput: AppCompatEditText
+    private lateinit var emailInput: TextInputEditText
     private lateinit var passInput: AppCompatEditText
     private lateinit var listener: OnFragmentClickListener
 
@@ -28,9 +30,8 @@ class Fragment1: Fragment(R.layout.fragment1) {
 
         view.findViewById<AppCompatButton>(R.id.btn).setOnClickListener {
             if (TextUtils.isEmpty(emailInput.text.toString()) || TextUtils.isEmpty(passInput.text.toString())) {
-                Toast.makeText(requireContext(),
-                    "Empty field not allowed!",
-                    Toast.LENGTH_SHORT).show();
+                emailInput.error = "Неправильно заполнены поля"
+                passInput.error = "Поле не может быть пустым"
             } else {
                 Toast.makeText(requireContext(),
                     "Proceed..",

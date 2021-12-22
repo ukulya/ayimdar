@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputLayout
 class Fragment1: Fragment(R.layout.fragment1) {
 
     private lateinit var emailInput: TextInputEditText
-    private lateinit var passInput: AppCompatEditText
+    private lateinit var passInput: TextInputEditText
     private lateinit var listener: OnFragmentClickListener
 
     override fun onAttach(context: Context) {

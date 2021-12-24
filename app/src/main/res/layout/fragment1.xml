@@ -4,23 +4,34 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_margin="15dp"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fragment 1"
-        android:id="@+id/fragment1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/cardview_shadow_start_color"
+        android:id="@+id/email"
+        android:hint="Введите почту"
         />
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_margin="15dp"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="fragment_btn1"
-        android:id="@+id/fragment_btn1"/>
+        android:id="@+id/edit"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="Введите пароль"
+        app:layout_constraintTop_toBottomOf="@+id/email"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_margin="15dp"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edit"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Зарегаться"
+        android:id="@+id/btn"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

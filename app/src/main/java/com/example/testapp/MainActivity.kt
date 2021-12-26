@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         //val item = findViewById<AppCompatButton>(R.id.btn_1)
 
         val recycler = findViewById<RecyclerView>(R.id.recycler)
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = GridLayoutManager(this,2)
         val adapter = SimpleAdapter {
             Toast.makeText(this, "ITEM -$it", Toast.LENGTH_SHORT).show()
             goTo(it)

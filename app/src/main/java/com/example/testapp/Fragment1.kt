@@ -2,6 +2,8 @@ package com.example.testapp
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
@@ -22,6 +24,39 @@ class Fragment1: Fragment(R.layout.fragment1) {
         val password = view.findViewById<AppCompatEditText>(R.id.password)
         val email = view.findViewById<AppCompatEditText>(R.id.email)
         val btn = view.findViewById<AppCompatButton>(R.id.btn)
+
+        password.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(email.text.toString().trim().isNotEmpty()){
+                    btn.isEnabled = true
+                }
+
+            }
+        })
+
+        email.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(password.text.toString().trim().isNotEmpty()){
+                    btn.isEnabled = true
+                }
+            }
+        })
 
         btn.setOnClickListener {
             preferences.saveString(KEY_TEXT, email.text.toString())

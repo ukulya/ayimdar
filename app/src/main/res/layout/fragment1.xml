@@ -12,6 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/email"
+        android:inputType="textEmailAddress"
         android:hint="Введите почту"
         />
     <androidx.appcompat.widget.AppCompatEditText
@@ -21,10 +22,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/password"
         app:layout_constraintStart_toStartOf="parent"
+        android:inputType="textPassword"
         android:hint="Введите пароль"
         app:layout_constraintTop_toBottomOf="@+id/email"/>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_margin="15dp"
+        android:enabled="false"
         android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

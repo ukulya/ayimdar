@@ -14,10 +14,12 @@ class Fragment3: Fragment(R.layout.fragment3) {
         val txt = view.findViewById<AppCompatTextView>(R.id.txt)
 
         txt.text = preferences.getString(KEY_TEXT)
+        //requireActivity().onBackPressed(finish())
 
     }
 
     companion object {
         const val KEY_TEXT = "keyText"
     }
+
 }

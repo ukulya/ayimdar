@@ -1,10 +1,11 @@
-package com.example.navigationdrawer
+package com.example.TestApp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
@@ -29,17 +30,16 @@ class MainActivity : AppCompatActivity() {
 
             when(it.itemId){
 
-                R.id.nav_home -> Toast.makeText(applicationContext,"Clicked Home",Toast.LENGTH_SHORT).show()
-                R.id.nav_message -> Toast.makeText(applicationContext,"Clicked Message",Toast.LENGTH_SHORT).show()
-                R.id.nav_sync -> Toast.makeText(applicationContext,"Clicked Synch",Toast.LENGTH_SHORT).show()
-                R.id.nav_trash -> Toast.makeText(applicationContext,"Clicked Delete",Toast.LENGTH_SHORT).show()
-                R.id.nav_setting -> Toast.makeText(applicationContext,"Clicked Setting",Toast.LENGTH_SHORT).show()
-                R.id.nav_login -> Toast.makeText(applicationContext,"Clicked Login",Toast.LENGTH_SHORT).show()
-                R.id.nav_share -> Toast.makeText(applicationContext,"Clicked Share",Toast.LENGTH_SHORT).show()
-                R.id.nav_rate_us -> Toast.makeText(applicationContext,"Clicked Rate us",Toast.LENGTH_SHORT).show()
+                R.id.nav_home ->supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, FragmentHome())
+                    .commit()
+                    //drawerLayout.closeDrawer(GravityCompat.START)
+                R.id.nav_message ->supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, FragmentMessage())
+                    .commit()
                 
             }
-
+            toggle.syncState()
             true
 
 
@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         if (toggle.onOptionsItemSelected(item)){
 
             return true
-
 
         }
         return super.onOptionsItemSelected(item)

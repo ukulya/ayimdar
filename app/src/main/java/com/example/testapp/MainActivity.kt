@@ -21,8 +21,10 @@ class MainActivity : AppCompatActivity() {
         btn = findViewById(R.id.btn)
         btn.setOnClickListener {
 
-            val count = Regex("""(\s+|(\r\n|\r|\n))""").findAll(input.text.toString().trim()).count() + 1
-            text.text = count.toString()
+            text.text = input.text.toString().split("\\P{L}+".toRegex())
+                .filter { it.count { it == 'o'} == 1 }
+                .size
+                .toString()
         }
     }
 }

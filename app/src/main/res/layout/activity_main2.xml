@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50px"
-    tools:context=".MainActivity">
-
-    <androidx.appcompat.widget.AppCompatTextView
+    tools:context=".MainActivity2">
+    <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/text"
+        android:id="@+id/edit"
         android:gravity="center"
         android:textSize="40sp"
         android:text="text"
@@ -23,8 +21,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        android:text="go to 2nd activity"
+        app:layout_constraintTop_toBottomOf="@+id/edit"
+        android:text="go to 1st activity"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

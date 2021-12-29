@@ -18,13 +18,24 @@
         android:text="text"
         />
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        android:id="@+id/edit"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:hint="введите слова"
+        />
+
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        android:text="go to 2nd activity"
+        app:layout_constraintTop_toBottomOf="@+id/edit"
+        android:text="calc"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

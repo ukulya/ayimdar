@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 class SimpleAdapter(
     private val click: (pos: Int) -> Unit
 ) : RecyclerView.Adapter<SimpleAdapter.ViewHolder>() {
-    private var list = listOf<String>()
+    private var list = ArrayList<String>()
 
-    fun setData(list: List<String>) {
+    fun setData(list: ArrayList<String>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -33,7 +33,7 @@ class SimpleAdapter(
     }
 
     fun removeItem(position: Int) {
-        list.remove(position)
+        list.removeAt(position)
         notifyItemRemoved(position)
     }
 
@@ -46,8 +46,11 @@ class SimpleAdapter(
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_text)
             txt.text = item
             itemView.setOnClickListener {
-                click.invoke(bindingAdapterPosition)
-
+                click.invoke(adapterPosition)
+            }
+            itemView.setOnLongClickListener{
+                click.invoke(adapterPosition)
+                true
             }
         }
 

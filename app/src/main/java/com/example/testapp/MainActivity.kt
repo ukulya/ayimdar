@@ -3,13 +3,11 @@ package com.example.testapp
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), OnFragmentClickListener {
+    private lateinit var adapter: SimpleAdapter
+    private val itemList = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,16 +19,6 @@ class MainActivity : AppCompatActivity(), OnFragmentClickListener {
     }
 
     override fun onClick(enteredText: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Item deletion")
-        builder.setMessage("Do you want to delete this item?")
-        builder.setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
-        })
-        builder.setNegativeButton("No", DialogInterface.OnClickListener { _, _ ->
-        })
-        builder.setNeutralButton("Cancel", DialogInterface.OnClickListener { _, _ ->
-        })
-        builder.show();
 
         val fragment2 = Fragment2()
         val bundle = Bundle()
@@ -41,5 +29,18 @@ class MainActivity : AppCompatActivity(), OnFragmentClickListener {
             .replace(R.id.fragment_container, fragment2)
             .addToBackStack(null)
             .commit()
+    }
+    override fun onLongClick(position: Int) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Item deletion")
+        builder.setMessage("Do you want to delete this item?")
+        builder.setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
+            adapter.removeItem(position)
+        })
+        builder.setNegativeButton("No", DialogInterface.OnClickListener { _, _ ->
+        })
+        builder.setNeutralButton("Cancel", DialogInterface.OnClickListener { _, _ ->
+        })
+        builder.show();
     }
 }

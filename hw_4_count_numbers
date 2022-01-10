@@ -9,6 +9,11 @@
  */
 fun main(){
     val x1 = readLine()
-    val res = x1.toString().length
+    var res = 0
+    if (x1 != null) {
+        for(i in x1.indices){
+            res++
+        }
+    }
     println("кол-во цифр = $res")
 }

@@ -43,36 +43,38 @@ import java.util.*
  */
 
 fun main(){
+    val contacts = hashMapOf<String,Int>()
     println("введите кол-во записей:")
     val x = readLine()!!.toInt()
-    println("вы ввели $x")
-
-    val list: MutableList<String> = ArrayList()
-
+    val read = Scanner(System.`in`)
     for (i in 1..x) {
 
-        val item = readLine()!!.toString()
-        list += item
+        val name = read.next()
+        val phone = read.nextInt()
+        contacts[name] = phone
 
     }
 
-    println("you entered $list")
+    do {
+        println("Введите имя: ")
+        val key = readLine()
+        if (key in contacts.keys){
+            println("$key = ${contacts[key]}")
+        } else {
+            println("Не найдено")
+        }
+    } while (key != "exit")
+    read.close()
 
-    /*val sc = Scanner(System.`in`)
-    val m = sc.nextLine()
-    val m2 = sc.nextLine()
-    println("$m $m2")
-    sc.close()*/
+}
+private fun String?.parseToInt(): Int {
+    if (this == null) return 0
+    if (this == "") return 0
 
-    val searchInput = readLine()!!.toString()
-    /*val result = list.contains(searchInput)
-    println(result)*/
-
-    val result = list.filter { it.contains(searchInput) }.toString()
-    if (result.isNotEmpty()){
-        println(result)
-    } else{
-        println("Not found")
+    return try {
+        this.toInt()
+    } catch (e: NumberFormatException) {
+        println("exception= $e")
+        return 0
     }
-
 }

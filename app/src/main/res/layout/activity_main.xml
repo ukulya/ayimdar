@@ -6,9 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <com.example.testapp.customview.WeatherStateView
+        android:id="@+id/loan_state"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_container"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingVertical="20dp"
+        android:background="@color/white"
+        app:lpsvPaymentDateText="Оплатить до 24 января"
+        app:lpsvPaymentAmountText="38 000 c"
+        app:lpsvPaymentButtonText="Оплатить"
+        app:lpsvPaymentText="@string/common.credit.enoughFunds"
+        app:lpsvPaymentStatus="expired"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

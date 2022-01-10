@@ -41,7 +41,7 @@ class SimpleAdapter(
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_text)
             txt.text = item
             itemView.setOnClickListener {
-                click.invoke(bindingAdapterPosition)
+                click.invoke(adapterPosition)
 
             }
         }

@@ -32,6 +32,11 @@ class SimpleAdapter(
         return list.size
     }
 
+    fun removeItem(position: Int) {
+        list.remove(position)
+        notifyItemRemoved(position)
+    }
+
     class ViewHolder(
         itemView: View,
         private val click: (pos: Int) -> Unit

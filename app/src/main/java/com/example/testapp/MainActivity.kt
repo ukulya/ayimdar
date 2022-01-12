@@ -15,15 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        text = findViewById(R.id.text)
         input = findViewById(R.id.edit)
+        text = findViewById(R.id.text)
         btn = findViewById(R.id.btn)
-
         btn.setOnClickListener {
-            text.text = input.text.toString().split("\\P{L}+".toRegex())
-                .filter { it.endsWith("ая") }
+            //text.text = input.text.toString().split("\\P{L}+".toRegex()).maxBy { it -> it.length }
+            //text.text = input.text.toString().maxBy { max(it.key.toInt(), it.value.toInt()) }
+            /*text.text = input.text.toString().split("\\P{L}+".toRegex())
+                .filter { it.count { it == 'o'} == 1 }
                 .size
-                .toString()
+                .toString()*/
         }
     }
 

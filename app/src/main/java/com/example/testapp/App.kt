@@ -2,7 +2,7 @@ package com.example.testapp
 
 import android.app.Application
 import androidx.room.Room
-import com.kay.progayim.database.AppDatabase
+import com.example.testapp.database.AppDatabase
 
 class App : Application() {
 

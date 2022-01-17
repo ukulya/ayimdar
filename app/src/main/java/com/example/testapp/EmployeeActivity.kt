@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 
-class Fragment1: Fragment(R.layout.fragment1) {
+class EmployeeActivity: Fragment(R.layout.activity_employee) {
     private val preferences get() = Injector.preferences
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

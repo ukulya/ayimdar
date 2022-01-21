@@ -3,27 +3,30 @@ package com.example.testapp
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testapp.database.Employee
+import com.example.testapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : AppCompatActivity(),OnFragmentClickListener {
+
     private val dbInstance get() = Injector.database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, FormFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+    override fun onClick() {
+        val fragment2 = ResultFragment()
+        //val bundle = Bundle()
+        //bundle.putString(dbInstance.i, enteredID)
+        //fragment2.arguments = bundle
 
-        binding.apply {
-            btnSave.setOnClickListener {
-                val e = Employee(
-                    name = txtName.text.toString(),
-                    company = txtCompany.text.toString(),
-                    salary = txtSalary.text.toString().toInt()
-                )
-                dbInstance.employeeDao().insert(e)
-                startActivity(Intent(this@MainActivity, EmployeeActivity::class.java))
-            }
-        }
-
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment2)
+            .addToBackStack(null)
+            .commit()
     }
 }

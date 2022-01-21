@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".EmployeeActivity">
+    tools:context=".ResultFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtName"

@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.example.testapp.database.Employee
-import com.example.testapp.databinding.FragmentFormBinding
+import com.example.testapp.databinding.FragmentEditBinding
 
-class FormFragment : Fragment(R.layout.fragment_form) {
+class EditFragment : Fragment(R.layout.fragment_edit) {
     private lateinit var listener: OnFragmentClickListener
-    private var fragmentFormBinding: FragmentFormBinding? = null
+    private var fragmentEditBinding: FragmentEditBinding? = null
     private val dbInstance get() = Injector.database
 
     override fun onAttach(context: Context) {
@@ -19,30 +19,30 @@ class FormFragment : Fragment(R.layout.fragment_form) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentFormBinding.bind(view)
-        fragmentFormBinding = binding
+        val binding = FragmentEditBinding.bind(view)
+        fragmentEditBinding = binding
 
         binding.apply {
+            val e = dbInstance.employeeDao().getById(1L)
+            txtName.setText(e.name)
+            txtCompany.setText(e.company)
+            txtSalary.setText(e.salary)
+
             btnSave.setOnClickListener {
                 val e = Employee(
+                    id = 1L,
                     name = txtName.text.toString(),
                     company = txtCompany.text.toString(),
                     salary = txtSalary.text.toString()
                 )
-                dbInstance.employeeDao().insert(e)
+                dbInstance.employeeDao().update(e)
                 listener.onClick()
-            }
-            btnEdit.setOnClickListener {
-                listener.onClickEdit()
-            }
-            btnDelete.setOnClickListener {
-                listener.onClickDelete()
             }
         }
     }
 
     override fun onDestroyView() {
-        fragmentFormBinding = null
+        fragmentEditBinding = null
         super.onDestroyView()
     }
 

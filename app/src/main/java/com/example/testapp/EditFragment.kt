@@ -1,10 +1,11 @@
+/*
 package com.example.testapp
 
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import com.example.testapp.database.Employee
+import com.example.testapp.database.Contact
 import com.example.testapp.databinding.FragmentEditBinding
 
 class EditFragment : Fragment(R.layout.fragment_edit) {
@@ -29,7 +30,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             txtSalary.setText(e.salary)
 
             btnSave.setOnClickListener {
-                val e = Employee(
+                val e = Contact(
                     id = 1L,
                     name = txtName.text.toString(),
                     company = txtCompany.text.toString(),
@@ -47,3 +48,4 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
     }
 
 }
+*/

@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".EditFragment">
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
+    tools:context=".FormFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="40sp"
-        android:text="Edit Form"
+        android:text="Add Contact"
         android:id="@+id/edit_title"/>
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -22,7 +25,7 @@
         android:layout_height="wrap_content"
         android:textSize="28sp"
         android:textColor="@color/black"
-        android:hint="Enter your name" />
+        android:hint="Enter name" />
 
     <androidx.appcompat.widget.AppCompatEditText
         app:layout_constraintStart_toStartOf="parent"
@@ -32,44 +35,15 @@
         android:layout_height="wrap_content"
         android:textSize="28sp"
         android:textColor="@color/black"
-        android:hint="Enter Company" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCompany"
-        android:id="@+id/txtSalary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:textColor="@color/black"
-        android:hint="Enter salasry" />
+        android:hint="Enter Phone" />
 
     <androidx.appcompat.widget.AppCompatButton
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSalary"
+        app:layout_constraintTop_toBottomOf="@+id/txtCompany"
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textSize="18sp"
         android:text="save And Go"/>
-    <androidx.appcompat.widget.AppCompatButton
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSave"
-        android:id="@+id/btnEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="18sp"
-        android:text="Edit"/>
-    <androidx.appcompat.widget.AppCompatButton
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEdit"
-        android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="18sp"
-        android:text="Delete"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import com.example.testapp.database.Employee
+import com.example.testapp.database.Contact
 import com.example.testapp.databinding.FragmentFormBinding
 
 class FormFragment : Fragment(R.layout.fragment_form) {
@@ -24,19 +24,12 @@ class FormFragment : Fragment(R.layout.fragment_form) {
 
         binding.apply {
             btnSave.setOnClickListener {
-                val e = Employee(
+                val e = Contact(
                     name = txtName.text.toString(),
-                    company = txtCompany.text.toString(),
-                    salary = txtSalary.text.toString()
+                    phone = txtCompany.text.toString(),
                 )
-                dbInstance.employeeDao().insert(e)
-                listener.onClick()
-            }
-            btnEdit.setOnClickListener {
-                listener.onClickEdit()
-            }
-            btnDelete.setOnClickListener {
-                listener.onClickDelete()
+                dbInstance.contactDao().insert(e)
+                listener.onClickOpenDetailsFragment()
             }
         }
     }

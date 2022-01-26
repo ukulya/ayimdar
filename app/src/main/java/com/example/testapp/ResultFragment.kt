@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import com.example.testapp.databinding.FragmentFormBinding
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testapp.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment(R.layout.fragment_result) {
@@ -22,10 +22,20 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         val binding = FragmentResultBinding.bind(view)
         resultFragmentBinding = binding
         binding.apply {
-            val e = dbInstance.employeeDao().getById(1L)
-            txtName.text = e.name
-            txtCompany.text = e.company
-            txtSalary.text = e.salary
+
+            recycler.layoutManager = LinearLayoutManager(requireContext())
+
+            val adapter = SimpleAdapter{
+                listener.onClick(it.id!!)
+            }
+
+            recycler.adapter = adapter
+
+            adapter.setContactList(dbInstance.contactDao().getAll())
+
+            btnAdd.setOnClickListener {
+                listener.onClickOpenFormFragment()
+            }
         }
     }
     override fun onDestroyView() {

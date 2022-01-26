@@ -1,10 +1,10 @@
+/*
 package com.example.testapp
 
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import com.example.testapp.database.Employee
 import com.example.testapp.databinding.FragmentDeleteBinding
 
 class DeleteFragment : Fragment(R.layout.fragment_delete) {
@@ -37,4 +37,4 @@ class DeleteFragment : Fragment(R.layout.fragment_delete) {
         super.onDestroyView()
     }
 
-}
+}*/

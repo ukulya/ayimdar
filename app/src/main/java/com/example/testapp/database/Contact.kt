@@ -4,10 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 // skeleton
 @Entity
-data class Employee(
+data class Contact(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
     val name: String,
-    val company: String,
-    val salary: String
+    val phone: String,
 )

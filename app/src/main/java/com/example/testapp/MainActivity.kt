@@ -20,6 +20,13 @@ class MainActivity : AppCompatActivity(),OnFragmentClickListener {
         bundle.putLong("id", id)
         fragment2.arguments = bundle
 
+        //val temp = DetailsFragment()
+        //val temp2 = DetailsFragment()
+        // they are not the same
+        // fragment2 has arguments
+        // DetailsFragment() has no arguments
+        // therefore always use val declaration and assign
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment2)
             .addToBackStack(null)

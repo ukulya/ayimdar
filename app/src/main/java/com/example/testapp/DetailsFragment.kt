@@ -26,8 +26,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details){
         binding.apply {
             val userID = arguments?.getLong("id",-1L) ?: -1L // Elvis Operator
             val e = dbInstance.contactDao().getById(userID)
-            txtName.text = e.name
-            txtPhone.text = e.phone
+            txtName.setText(e.name)
+            txtPhone.setText(e.phone)
+
+            btnSave.setOnClickListener {
+                val e = Contact(
+                    id = userID,
+                    name = txtName.text.toString(),
+                    phone = txtPhone.text.toString(),
+                )
+                dbInstance.contactDao().update(e)
+            }
         }
     }
 

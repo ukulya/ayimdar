@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="40sp"
-        android:text="Contact Details"
+        android:text="Edit Contact Details"
         android:id="@+id/edit_title"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatEditText
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_title"
         android:id="@+id/txtName"
@@ -24,7 +24,7 @@
         android:textColor="@color/black"
         android:text="Contact Name" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatEditText
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName"
         android:id="@+id/txtPhone"
@@ -34,5 +34,14 @@
         android:textColor="@color/black"
         android:text="Contact Phone" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPhone"
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="18sp"
+        android:text="save And Go"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

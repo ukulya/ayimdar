@@ -30,27 +30,7 @@ class MainActivity : AppCompatActivity(),OnFragmentClickListener {
             .addToBackStack(null)
             .commit()
     }
-    /*override fun onClickRemove(id: Long) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Are you sure you wanna delete?")
-        builder.setMessage("We have a message")
 
-        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-            Toast.makeText(applicationContext,
-                android.R.string.yes, Toast.LENGTH_SHORT).show()
-            val e = dbInstance.contactDao().getById(id)
-            dbInstance.contactDao().delete(e)
-
-        }
-
-        builder.setNegativeButton(android.R.string.no) { dialog, which ->
-            Toast.makeText(applicationContext,
-                android.R.string.no, Toast.LENGTH_SHORT).show()
-        }
-
-        builder.show()
-
-    }*/
     override fun onClickOpenDetailsFragment() {
 
         supportFragmentManager.beginTransaction()

@@ -38,4 +38,13 @@
         android:text="calc"
         />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_act"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn"
+        android:text="go to activity 2 - check words with 3 letters"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

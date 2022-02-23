@@ -4,16 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity2">
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/edit"
+        android:id="@+id/text"
         android:gravity="center"
         android:textSize="40sp"
         android:text="text"
+        />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        android:id="@+id/edit"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:hint="text"
         />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -22,7 +33,7 @@
         android:id="@+id/btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit"
-        android:text="go to 1st activity"
+        android:text="check words with 3 letters"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.testapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
@@ -10,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var text: AppCompatTextView
     private lateinit var input: AppCompatEditText
     private lateinit var btn: AppCompatButton
+    private lateinit var btn_act: AppCompatButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,11 +20,15 @@ class MainActivity : AppCompatActivity() {
         input = findViewById(R.id.edit)
         text = findViewById(R.id.text)
         btn = findViewById(R.id.btn)
+        btn_act = findViewById(R.id.btn_act)
         btn.setOnClickListener {
             text.text = input.text.toString().split("\\P{L}+".toRegex())
-                .filter { it == 'kotlin'}
+                .filter { it=="kotlin" }
                 .size
                 .toString()
+        }
+        btn_act.setOnClickListener {
+            setContentView(R.layout.activity_main2)
         }
     }
 

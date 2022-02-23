@@ -19,12 +19,10 @@ class MainActivity : AppCompatActivity() {
         text = findViewById(R.id.text)
         btn = findViewById(R.id.btn)
         btn.setOnClickListener {
-            //text.text = input.text.toString().split("\\P{L}+".toRegex()).maxBy { it -> it.length }
-            //text.text = input.text.toString().maxBy { max(it.key.toInt(), it.value.toInt()) }
-            /*text.text = input.text.toString().split("\\P{L}+".toRegex())
-                .filter { it.count { it == 'o'} == 1 }
+            text.text = input.text.toString().split("\\P{L}+".toRegex())
+                .filter { it == 'kotlin'}
                 .size
-                .toString()*/
+                .toString()
         }
     }
 

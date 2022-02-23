@@ -24,15 +24,6 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         val layoutManager = LinearLayoutManager(requireContext())
-
-        adapter = SimpleAdapter(
-            click = {
-                listener.onClick("ITEM $it")
-            },
-            deleteClick = {
-                listener.onLongClick(it)
-            }
-        )
         recycler.layoutManager = layoutManager
         recycler.adapter = adapter
         recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
@@ -42,7 +33,17 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
             list.add("ITEM -$i")
         }
         adapter.setData(list)
-        //adapter.removeItem(Int)
+        adapter = SimpleAdapter(
+            click = {
+                listener.onClick("ITEM $it")
+            },
+            deleteClick = {
+                listener.onLongClick(it)
+
+            }
+        )
+
+
     }
 
 }

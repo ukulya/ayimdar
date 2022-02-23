@@ -26,6 +26,7 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         val layoutManager = LinearLayoutManager(requireContext())
         adapter = SimpleAdapter {
+
             Toast.makeText(requireContext(), "ITEM -$it", Toast.LENGTH_SHORT).show()
             listener.onClick("ITEM $it")
             listener.onLongClick(it)
@@ -42,7 +43,7 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
             list.add("ITEM -$i")
         }
         adapter.setData(list)
-        //adapter.removeItem(position = Int)
+        //adapter.removeItem(Int)
     }
 
 }

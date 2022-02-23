@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class SimpleAdapter(
-    private val click: (pos: Int) -> Unit
+    private val click: (pos: Int) -> Unit,
+    private val deleteClick: (pos: Int) -> Unit,
 ) : RecyclerView.Adapter<SimpleAdapter.ViewHolder>() {
     private var list = ArrayList<String>()
 
@@ -20,7 +21,7 @@ class SimpleAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recycler, parent, false)
-        return ViewHolder(itemView, click)
+        return ViewHolder(itemView, click,deleteClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -39,7 +40,8 @@ class SimpleAdapter(
 
     class ViewHolder(
         itemView: View,
-        private val click: (pos: Int) -> Unit
+        private val click: (pos: Int) -> Unit,
+        private val deleteClick: (pos: Int) -> Unit,
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: String) { // viewbinding
@@ -49,7 +51,7 @@ class SimpleAdapter(
                 click.invoke(adapterPosition)
             }
             itemView.setOnLongClickListener{
-                click.invoke(adapterPosition)
+                deleteClick.invoke(adapterPosition)
                 true
             }
         }

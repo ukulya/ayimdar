@@ -44,7 +44,7 @@ class SimpleAdapter(
         private val deleteClick: (pos: Int) -> Unit,
     ) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: String) { // viewbinding
+        fun bind(item: String) {
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_text)
             txt.text = item
             itemView.setOnClickListener {

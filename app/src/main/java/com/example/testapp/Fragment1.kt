@@ -22,18 +22,17 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // viewbinding
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         val layoutManager = LinearLayoutManager(requireContext())
-        adapter = SimpleAdapter {
 
-            Toast.makeText(requireContext(), "ITEM -$it", Toast.LENGTH_SHORT).show()
-            listener.onClick("ITEM $it")
-            listener.onLongClick(it)
-        }
-        // интент неявный
-            // кнопка - открыть неявный интент - и передать в активити тот же текст
-
+        adapter = SimpleAdapter(
+            click = {
+                listener.onClick("ITEM $it")
+            },
+            deleteClick = {
+                listener.onLongClick(it)
+            }
+        )
         recycler.layoutManager = layoutManager
         recycler.adapter = adapter
         recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))

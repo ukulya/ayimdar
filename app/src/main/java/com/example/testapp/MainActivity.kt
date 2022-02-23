@@ -30,12 +30,12 @@ class MainActivity : AppCompatActivity(), OnFragmentClickListener {
             .addToBackStack(null)
             .commit()
     }
-    override fun onLongClick(position: Int) {
+    override fun onLongClick(pos: Int) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Item deletion")
         builder.setMessage("Do you want to delete this item?")
         builder.setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
-            adapter.removeItem(position)
+            adapter.removeItem(pos)
         })
         builder.setNegativeButton("No", DialogInterface.OnClickListener { _, _ ->
         })

@@ -50,14 +50,14 @@ class MainActivity : AppCompatActivity(), OnFragmentClickListener {
     }
 }
 
-fun xx1():String {return "xxx"} // функция - потому что вне класса
-fun xxx(x: String): String {return x} // функция - потому что вне класса
-
-fun xxx1(run: () -> String) { // лямбда ф-я
-
-    //
-    run.invoke()
-    //
-
-}
-fun xx2() : String {return "xxx2"}
+//fun xx1():String {return "xxx"} // функция - потому что вне класса
+//fun xxx(x: String): String {return x} // функция - потому что вне класса
+//
+//fun xxx1(run: () -> String) { // лямбда ф-я
+//
+//    //
+//    run.invoke()
+//    //
+//
+//}
+//fun xx2() : String {return "xxx2"}

@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +25,16 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         val layoutManager = LinearLayoutManager(requireContext())
         recycler.layoutManager = layoutManager
+
+        adapter = SimpleAdapter(
+            click = {
+                listener.onClick("ITEM $it")
+            },
+            deleteClick = {
+                listener.onLongClick({ adapter.removeItem(it) })
+
+            }
+        )
         recycler.adapter = adapter
         recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
 
@@ -34,40 +43,7 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
             list.add("ITEM -$i")
         }
         adapter.setData(list)
-        adapter = SimpleAdapter(
-            click = {
-                listener.onClick("ITEM $it")
-            },
-            deleteClick = { pos: Int ->
-                onClickItemRemove(pos)
-            }
-        )
 
     }
-    private fun onClickItemRemove(position: Int) {
-        //listener.onClickRemove(it.id!!)
 
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Are you sure you wanna delete?")
-        builder.setMessage("We have a message")
-
-        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-            Toast.makeText(
-                requireContext(),
-                android.R.string.yes, Toast.LENGTH_SHORT
-            ).show()
-
-            adapter.removeItem(position)
-
-        }
-
-        builder.setNegativeButton(android.R.string.no) { dialog, which ->
-            Toast.makeText(
-                requireContext(),
-                android.R.string.no, Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        builder.show()
-    }
 }

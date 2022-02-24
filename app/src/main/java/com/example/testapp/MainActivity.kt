@@ -18,13 +18,27 @@ class MainActivity : AppCompatActivity() {
         input = findViewById(R.id.edit)
         text = findViewById(R.id.text)
         btn = findViewById(R.id.btn)
+        var frequency = 0
+        var charA: Int
+        var maxWord = ""
         btn.setOnClickListener {
-            //text.text = input.text.toString().split("\\P{L}+".toRegex()).maxBy { it -> it.length }
-            //text.text = input.text.toString().maxBy { max(it.key.toInt(), it.value.toInt()) }
+
             /*text.text = input.text.toString().split("\\P{L}+".toRegex())
                 .filter { it.count { it == 'o'} == 1 }
                 .size
                 .toString()*/
+
+            val str = input.text.toString().split("\\P{L}+".toRegex())
+            str.forEach {
+                if(it.contains("a")){
+                    charA = it.count { char -> char == 'a' }
+                    if(frequency < charA){
+                        frequency = charA
+                        maxWord = it
+                    }
+                }
+            }
+            text.text = maxWord + " has - $frequency a char "
         }
     }
 

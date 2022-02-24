@@ -36,6 +36,7 @@ class SimpleAdapter(
     fun removeItem(position: Int) {
         list.removeAt(position)
         notifyItemRemoved(position)
+        notifyItemRangeChanged(position, list.size)
     }
 
     class ViewHolder(

@@ -30,17 +30,34 @@ class MainActivity : AppCompatActivity(), OnFragmentClickListener {
             .addToBackStack(null)
             .commit()
     }
-    override fun onLongClick(pos: Int) {
+
+    override fun onLongClick(removeItem: () -> Unit ) { // метод - потому что внутри класса
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Item deletion")
         builder.setMessage("Do you want to delete this item?")
         builder.setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
-            adapter.removeItem(pos)
+            removeItem.invoke() // лямбда - через invoke вызываем
         })
         builder.setNegativeButton("No", DialogInterface.OnClickListener { _, _ ->
         })
         builder.setNeutralButton("Cancel", DialogInterface.OnClickListener { _, _ ->
         })
         builder.show();
+
+//        xxx(xx1())
+//
+//        xxx1( { xx2() } )
     }
 }
+
+fun xx1():String {return "xxx"} // функция - потому что вне класса
+fun xxx(x: String): String {return x} // функция - потому что вне класса
+
+fun xxx1(run: () -> String) { // лямбда ф-я
+
+    //
+    run.invoke()
+    //
+
+}
+fun xx2() : String {return "xxx2"}

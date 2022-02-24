@@ -1,4 +1,4 @@
-package com.example.testapp
+package com.example.testapp.ext
 
 import android.content.Context
 import android.content.res.TypedArray

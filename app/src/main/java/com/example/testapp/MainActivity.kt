@@ -18,11 +18,16 @@ class MainActivity : AppCompatActivity() {
         input = findViewById(R.id.edit)
         text = findViewById(R.id.text)
         btn = findViewById(R.id.btn)
-        val words = arrayOf("zero", "one", "two", "three", "four",
-            "five", "six", "seven", "eight", "nine")
-        btn.setOnClickListener {
+        var countEven = 0
 
-            text.text = input.text.toString().map{ words[it.toString().toInt()] }.joinToString(" ")
+
+        btn.setOnClickListener {
+            input.text.toString().split("\\s+".toRegex()).forEach {
+                if (it.length % 2 == 0 && it.isNotEmpty()) {
+                    countEven++
+                }
+            }
+            text.text = countEven.toString()
 
 
         }

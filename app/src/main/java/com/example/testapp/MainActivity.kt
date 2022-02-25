@@ -18,14 +18,11 @@ class MainActivity : AppCompatActivity() {
         input = findViewById(R.id.edit)
         text = findViewById(R.id.text)
         btn = findViewById(R.id.btn)
-        var frequency = 0
-        val punctuationChars = setOf('!', ',', ';', ':', '?', '.')
+        val words = arrayOf("zero", "one", "two", "three", "four",
+            "five", "six", "seven", "eight", "nine")
         btn.setOnClickListener {
-            frequency = input.text.toString().count { char -> char in punctuationChars }
 
-            val custom = input.text.toString()
-                .replace("[^A-Za-z0-9 ]".toRegex(), "*")
-            text.text = custom + " - there are $frequency of punctuation Chars"
+            text.text = input.text.toString().map{ words[it.toString().toInt()] }.joinToString(" ")
 
 
         }

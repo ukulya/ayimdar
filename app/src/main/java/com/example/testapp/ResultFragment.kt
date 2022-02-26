@@ -7,7 +7,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.testapp.database.Contact
 import com.example.testapp.databinding.FragmentResultBinding
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ResultFragment : Fragment(R.layout.fragment_result) {
     private lateinit var listener: OnFragmentClickListener
@@ -39,8 +42,11 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
             )
 
             recycler.adapter = adapter
-
-            adapter.setContactList(dbInstance.contactDao().getAll())
+            dbInstance.contactDao().getAll()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext {adapter.setContactList(it) }
+                .subscribe()
 
             btnAdd.setOnClickListener {
                 listener.onClickOpenFormFragment()
@@ -50,7 +56,6 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
     }
 
     private fun onClickItemRemove(id: Long,position: Int) {
-        //listener.onClickRemove(it.id!!)
 
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Are you sure you wanna delete?")
@@ -61,8 +66,16 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
                 requireContext(),
                 android.R.string.yes, Toast.LENGTH_SHORT
             ).show()
-            val e = dbInstance.contactDao().getById(id)
-            dbInstance.contactDao().delete(e)
+
+            dbInstance.contactDao().getById(id)
+                .subscribeOn(Schedulers.io())
+                .flatMapCompletable {
+                    dbInstance.contactDao().delete(it)
+                }
+                .observeOn(AndroidSchedulers.mainThread())
+                //.doOnComplete {}
+                .subscribe()
+
             adapter.removeAt(position)
 
         }

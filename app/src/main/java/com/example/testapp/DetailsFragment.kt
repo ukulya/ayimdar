@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testapp.database.Contact
 import com.example.testapp.databinding.FragmentDetailsBinding
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class DetailsFragment : Fragment(R.layout.fragment_details){
     private lateinit var listener: OnFragmentClickListener
@@ -25,9 +27,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details){
 
         binding.apply {
             val userID = arguments?.getLong("id",-1L) ?: -1L // Elvis Operator
-            val e = dbInstance.contactDao().getById(userID)
-            txtName.setText(e.name)
-            txtPhone.setText(e.phone)
+            dbInstance.contactDao().getById(userID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess { // для single
+                    txtName.setText(it.name)
+                    txtPhone.setText(it.phone)
+                }
+                .subscribe()
+
 
             btnSave.setOnClickListener {
                 val e = Contact(
@@ -36,6 +44,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details){
                     phone = txtPhone.text.toString(),
                 )
                 dbInstance.contactDao().update(e)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnComplete { listener.onClickOpenDetailsFragment() }
+                    .subscribe()
             }
         }
     }

@@ -1,5 +1,5 @@
 package com.example.testapp
 
 interface OnItemClickListener {
-    fun onClick(position: Int)
+    fun onClick(position: Long)
 }

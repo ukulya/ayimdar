@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class SimpleAdapter(
-    private val click: (pos: Int) -> Unit
+    private val click: (pos: Long?) -> Unit
 ) : RecyclerView.Adapter<SimpleAdapter.ViewHolder>() {
     private var list = listOf<Item>()
 
@@ -34,7 +34,7 @@ class SimpleAdapter(
 
     class ViewHolder(
         itemView: View,
-        private val click: (pos: Int) -> Unit
+        private val click: (pos: Long?) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Item) { // viewbinding
@@ -42,7 +42,7 @@ class SimpleAdapter(
             txt.text = item.title
 
             itemView.setOnClickListener {
-                click.invoke(adapterPosition)
+                click.invoke(item.episode_id)
 
             }
         }

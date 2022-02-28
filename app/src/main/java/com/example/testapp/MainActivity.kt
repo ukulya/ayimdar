@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),OnItemClickListener {
     private lateinit var binding: ActivityMainBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +16,16 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.fragment_container, Fragment())
             .commit()
 
+    }
+    override fun onClick(position: Long) {
+        val details = DetailsFragment()
+        val bundle = Bundle()
+        bundle.putLong("id", position)
+        details.arguments = bundle
 
-
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, details)
+            .addToBackStack(null)
+            .commit()
     }
 }

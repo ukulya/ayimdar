@@ -23,7 +23,7 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:text="title"
-        app:layout_constraintTop_toBottomOf="episode_id"
+        app:layout_constraintTop_toBottomOf="@+id/episode_id"
         app:layout_constraintStart_toStartOf="parent"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/season"
@@ -32,6 +32,42 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:text="season"
-        app:layout_constraintTop_toBottomOf="title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/air_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="air_date"
+        app:layout_constraintTop_toBottomOf="@+id/season"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/characters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="characters"
+        app:layout_constraintTop_toBottomOf="@+id/air_date"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="episode"
+        app:layout_constraintTop_toBottomOf="@+id/characters"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/series"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="series"
+        app:layout_constraintTop_toBottomOf="@+id/episode"
         app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

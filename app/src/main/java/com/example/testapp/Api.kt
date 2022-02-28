@@ -8,4 +8,6 @@ interface Api {
     @GET("episodes")
     fun getEpisodes(): Observable<List<Item>>
 
+    @GET("episodes/$id")
+    fun getEpisodeById(): Observable<List<Item>>
 }

@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(),OnItemClickListener {
             .commit()
 
     }
+
     override fun onClick(position: Long) {
         val details = DetailsFragment()
         val bundle = Bundle()

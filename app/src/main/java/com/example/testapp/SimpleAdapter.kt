@@ -1,5 +1,6 @@
 package com.example.testapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,21 @@ class SimpleAdapter(
 
     fun setData(list: List<Item>) {
         this.list = list
+        notifyDataSetChanged()
+        Log.e( "tag","setdata render")
+    }
+
+    /* Within the RecyclerView.Adapter class */
+
+    // Clean all elements of the recycler
+    fun clearData() {
+        this.list = listOf()
+        notifyDataSetChanged()
+    }
+
+    // Add a list of items -- change to type used
+    fun addAll(listNew: List<Item>) {
+        this.list = listNew
         notifyDataSetChanged()
     }
 

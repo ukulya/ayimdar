@@ -64,7 +64,6 @@ class Fragment : Fragment(R.layout.fragment) {
                 adapter.setData(it)
                 swipeContainer.setRefreshing(false)
             }
-            //.onErrorReturnItem() // здесь ошибка
             .subscribe()
     }
 }

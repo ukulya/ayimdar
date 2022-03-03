@@ -30,9 +30,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getLong("id") ?: 1L
 
-        episodesApi.getEpisodeById(id)
+        episodesApi.getEpisode(id)
             .subscribeOn(Schedulers.io())
-            .map { it.first() }
+            .map { it }
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
                 view.findViewById<AppCompatTextView>(R.id.id).text = "Character ID - ${it.id}"

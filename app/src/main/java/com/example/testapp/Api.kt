@@ -7,9 +7,9 @@ import io.reactivex.Single
 
 interface Api {
 
-    @GET("episodes")
+    @GET("character")
     fun getEpisodes(): Observable<List<Item>>
 
-    @GET("episodes/{id}")
+    @GET("character/{id}")
     fun getEpisodeById(@Path("id") id: Long): Single<List<Item>>
 }

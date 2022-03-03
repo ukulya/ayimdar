@@ -1,11 +1,17 @@
 package com.example.testapp
 
+import java.util.*
+
 data class Item(
-    val episode_id: Long?,
-    val title: String?,
-    val season: String?,
-    val air_date: String?,
-    val characters: List<String>?,
-    val episode: String?,
-    val series: String?
+    val id: Long?,
+    val name: String?,
+    val status: String?,
+    val species: String?,
+    val type: String?,
+    val gender: String?,
+    val origin: List<String>?,
+    val location: List<String>?,
+    val image: String?,
+    val url: String?,
+    val created: Date?,
 )

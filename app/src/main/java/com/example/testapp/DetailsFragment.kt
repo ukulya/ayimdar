@@ -33,13 +33,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             .map { it.first() }
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
-                view.findViewById<AppCompatTextView>(R.id.episode_id).text = "Episode ID - ${it.episode_id}"
-                view.findViewById<AppCompatTextView>(R.id.title).text = "Title - ${it.title}"
-                view.findViewById<AppCompatTextView>(R.id.season).text = "Season - ${it.season}"
-                view.findViewById<AppCompatTextView>(R.id.air_date).text = "Air date - ${it.air_date}"
-                view.findViewById<AppCompatTextView>(R.id.characters).text = "Characters - ${it.characters.toString()}"
-                view.findViewById<AppCompatTextView>(R.id.episode).text = "Episode - ${it.episode}"
-                view.findViewById<AppCompatTextView>(R.id.series).text = "Series - ${it.series}"
+                view.findViewById<AppCompatTextView>(R.id.id).text = "Character ID - ${it.id}"
+                view.findViewById<AppCompatTextView>(R.id.name).text = "Name - ${it.name}"
+                view.findViewById<AppCompatTextView>(R.id.status).text = "Status - ${it.status}"
+                view.findViewById<AppCompatTextView>(R.id.species).text = "Species - ${it.species}"
+                view.findViewById<AppCompatTextView>(R.id.type).text = "Type - ${it.type}"
+                view.findViewById<AppCompatTextView>(R.id.gender).text = "Gender - ${it.gender}"
+                view.findViewById<AppCompatTextView>(R.id.origin).text = "Origin - ${it.origin.toString()}"
+                view.findViewById<AppCompatTextView>(R.id.location).text = "Location - ${it.location.toString()}"
+                view.findViewById<AppCompatTextView>(R.id.image).text = "Image - ${it.image}"
+                view.findViewById<AppCompatTextView>(R.id.url).text = "Url - ${it.url}"
+                view.findViewById<AppCompatTextView>(R.id.created).text = "Created - ${it.created}"
             }
             .subscribe()
     }

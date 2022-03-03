@@ -4,9 +4,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-
+import com.bumptech.glide.Glide
 
 class SimpleAdapter(
     private val click: (pos: Long?) -> Unit
@@ -17,20 +18,6 @@ class SimpleAdapter(
         this.list = list
         notifyDataSetChanged()
         Log.e( "tag","setdata render")
-    }
-
-    /* Within the RecyclerView.Adapter class */
-
-    // Clean all elements of the recycler
-    fun clearData() {
-        this.list = listOf()
-        notifyDataSetChanged()
-    }
-
-    // Add a list of items -- change to type used
-    fun addAll(listNew: List<Item>) {
-        this.list = listNew
-        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -55,10 +42,16 @@ class SimpleAdapter(
 
         fun bind(item: Item) { // viewbinding
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_text)
-            txt.text = item.title
-
+            txt.text = item.name
+            itemView.findViewById<AppCompatTextView>(R.id.status).text = item.status
+            itemView.findViewById<AppCompatTextView>(R.id.species).text = item.species
+            itemView.findViewById<AppCompatTextView>(R.id.location).text = item.location.toString()
+            val img = itemView.findViewById<AppCompatImageView>(R.id.image)
+            Glide.with(itemView.context)
+                .load(item.image)
+                .into(img)
             itemView.setOnClickListener {
-                click.invoke(item.episode_id)
+                click.invoke(item.id)
 
             }
         }

@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -38,7 +39,8 @@ class Fragment : Fragment(R.layout.fragment) {
         )
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
-        val layoutManager = LinearLayoutManager(requireContext())
+        //val layoutManager = LinearLayoutManager(requireContext())
+        val layoutManager = GridLayoutManager(requireContext(),5)
 
 
         recycler.layoutManager = layoutManager
@@ -62,6 +64,7 @@ class Fragment : Fragment(R.layout.fragment) {
                 adapter.setData(it)
                 swipeContainer.setRefreshing(false)
             }
+            //.onErrorReturnItem() // здесь ошибка
             .subscribe()
     }
 }

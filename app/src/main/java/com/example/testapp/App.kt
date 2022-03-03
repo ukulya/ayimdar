@@ -54,7 +54,7 @@ class App : Application() {
     }
 
     companion object {
-        const val BASE_URL = "https://breakingbadapi.com/api/"
+        const val BASE_URL = "https://rickandmortyapi.com/api/"
         // should end with slash / - otherwise error
         const val TIMEOUT = 300L
 

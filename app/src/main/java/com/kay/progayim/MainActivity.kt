@@ -3,6 +3,7 @@ package com.kay.progayim
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.kay.progayim.databinding.ActivityMainBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -20,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         githubApi.getCharacters()
             .subscribeOn(Schedulers.io())
+            .map {
+                Thread.sleep(5000)
+                it
+            }
             .map {
                 val listEp = mutableListOf<CharacterEntity>()
                 it.results.forEach {
@@ -41,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
             .map {
                 database.characterDao().insertList(it)
+
             }
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext {
@@ -48,10 +54,10 @@ class MainActivity : AppCompatActivity() {
             }
             .subscribe()
 
-//        val list = database.characterDao().getAll()
-//        list[0].episode.forEach {
-//            Log.e("TAG", "episode = $it")
-//        }
-
+        database.characterDao().getAll().observe(this, {
+            it[0].episode.forEach {
+                Log.e("TAG", "episode = $it")
+            }
+        })
     }
 }

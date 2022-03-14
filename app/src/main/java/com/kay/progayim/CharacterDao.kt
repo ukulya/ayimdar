@@ -1,5 +1,6 @@
 package com.kay.progayim
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -11,7 +12,7 @@ import androidx.room.Update
 interface CharacterDao {
 
     @Query("SELECT * FROM CharacterEntity")
-    fun getAll(): List<CharacterEntity>
+    fun getAll(): LiveData<List<CharacterEntity>>
 
     @Query("SELECT * FROM CharacterEntity WHERE id = :id")
     fun getById(id: Long?): CharacterEntity
@@ -27,4 +28,7 @@ interface CharacterDao {
 
     @Delete
     fun delete(character: CharacterEntity)
+
+    @Query("DELETE from CharacterEntity")
+    fun deleteAll()
 }

@@ -33,7 +33,12 @@ class MainFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeToLiveData()
-        Log.d("VM", vm.toString())
+        Log.d("VM", vm.hashCode().toString())
+
+        binding.button.setOnClickListener {
+            vm.deleteEpisodes()
+        }
+
     }
 
     private fun subscribeToLiveData(){
@@ -49,9 +54,10 @@ class MainFragment: Fragment() {
             }
         })
 
-        vm.episodesCounterViaMap.observe(viewLifecycleOwner,{
+        vm.episodesNumber.observe(viewLifecycleOwner,{
             binding.tvCounter.text = it.toString()
         })
+
     }
 
     override fun onDestroyView() {

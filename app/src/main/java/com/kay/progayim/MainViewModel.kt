@@ -20,7 +20,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         if (it.isEmpty()) 0 else it[0].episode.count()
     }
 
-    //должен быть приватным
     private val _event = MutableLiveData<Event?>()
     val event: LiveData<Event?>
         get() = _event
@@ -74,6 +73,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()
+    }
+
+    fun deleteEpisodes(){
+        getApplication<App>().database.characterDao().deleteAll()
     }
 
     fun clearEvents() {

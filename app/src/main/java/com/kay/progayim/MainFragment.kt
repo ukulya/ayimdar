@@ -1,6 +1,7 @@
 package com.kay.progayim
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.kay.progayim.databinding.FragmentMainBinding
+import com.kay.progayim.extensions.showToast
 
 class MainFragment: Fragment() {
 
@@ -31,22 +33,30 @@ class MainFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeToLiveData()
+        Log.d("VM", vm.toString())
     }
 
     private fun subscribeToLiveData(){
         vm.charactersLiveData.observe(viewLifecycleOwner, {
-            if(it.isEmpty())
-                binding.textView2.text = ""
-            else
-                binding.textView2.text = it[0].episode.toString()
+            binding.tvEpisodes.text =  if(it.isEmpty()) "" else it[0].episode.toString()
         })
 
         vm.event.observe(viewLifecycleOwner, {
             when(it){
-                404 -> Toast.makeText(requireContext(),"ERRORR", Toast.LENGTH_SHORT ).show()
+                is Event.ShowToast -> showToast(getString(it.resId))
+                is Event.ShowLoadingToast -> showToast(getString(R.string.loading))
+                is Event.ShowFinishedLoadingToast -> showToast(getString(R.string.finished_loading))
             }
+        })
+
+        vm.episodesCounterViaMap.observe(viewLifecycleOwner,{
+            binding.tvCounter.text = it.toString()
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        vm.clearEvents()
+    }
 
 }

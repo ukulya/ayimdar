@@ -1,17 +1,26 @@
 package com.kay.progayim
 
 import android.app.Application
-import androidx.lifecycle.*
-import com.kay.progayim.extensions.toCharacterEntity
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import java.net.UnknownHostException
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
+    private val rickAndMortyRepo = RickAndMortyRepo(
+        getApplication<App>().rickAndMortyApi,
+        getApplication<App>().database.characterDao()
+    )
+
+    private val getCharacterUseCase = GetCharacterUseCase(rickAndMortyRepo)
+
+    private val deleteCharactersUseCase = DeleteCharactersUseCase(rickAndMortyRepo)
 
     val charactersLiveData: LiveData<List<CharacterEntity>> =
         getApplication<App>().database.characterDao().getAll()
@@ -24,37 +33,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val event: LiveData<Event?>
         get() = _event
 
-    private val _episodesNumber = MediatorLiveData<Int>()
-    val episodesNumber: LiveData<Int>
-    get()= _episodesNumber
-
-
     init {
         loadCharacters()
-        _episodesNumber.addSource(charactersLiveData){
-            _episodesNumber.value = if(it.isEmpty()) 0 else it[0].episode.count()
-        }
     }
 
     private fun loadCharacters() {
         _event.value = Event.ShowLoadingToast
         compositeDisposable.add(
-            getApplication<App>().githubApi.getCharacters()
-                .subscribeOn(Schedulers.io())
-                .map {
-                    Thread.sleep(5000)
-                    it
-                }
-                .map {
-                    val listEp = mutableListOf<CharacterEntity>()
-                    it.results.forEach {
-                        listEp.add(it.toCharacterEntity())
-                    }
-                    listEp.toList()
-                }
-                .map {
-                    getApplication<App>().database.characterDao().insertList(it)
-                }
+            getCharacterUseCase()
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate { _event.value = Event.ShowFinishedLoadingToast }
                 .subscribe({}, {
@@ -76,7 +62,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun deleteEpisodes(){
-        getApplication<App>().database.characterDao().deleteAll()
+        deleteCharactersUseCase()
+            .subscribe()
     }
 
     fun clearEvents() {

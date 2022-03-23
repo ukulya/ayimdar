@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import io.reactivex.Completable
 
 @Dao
 interface CharacterDao {
@@ -30,5 +31,5 @@ interface CharacterDao {
     fun delete(character: CharacterEntity)
 
     @Query("DELETE from CharacterEntity")
-    fun deleteAll()
+    fun deleteAll(): Completable
 }

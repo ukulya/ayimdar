@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.kay.progayim.databinding.FragmentMainBinding
@@ -54,7 +53,7 @@ class MainFragment: Fragment() {
             }
         })
 
-        vm.episodesNumber.observe(viewLifecycleOwner,{
+        vm.episodesCounterViaMap.observe(viewLifecycleOwner,{
             binding.tvCounter.text = it.toString()
         })
 

@@ -16,6 +16,7 @@ class App : Application() {
     private val isDebug get() = BuildConfig.DEBUG
     lateinit var database: AppDatabase
     lateinit var githubApi: GithubApi
+    lateinit var rickAndMortyApi: RickAndMortyApi
 
     override fun onCreate() {
         super.onCreate()
@@ -23,7 +24,7 @@ class App : Application() {
 
         database = Room.databaseBuilder(this, AppDatabase::class.java, "database")
             .fallbackToDestructiveMigration()
-            .allowMainThreadQueries()
+//            .allowMainThreadQueries()
             .build()
 
         val okHttpClient = OkHttpClient.Builder()
@@ -34,14 +35,14 @@ class App : Application() {
             .addInterceptor(httpHeaderLoggingInterceptor())
             .build()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+        val retrofitRickAndMorty = Retrofit.Builder()
+            .baseUrl(BASE_RICK_AND_MORTY_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        githubApi = retrofit.create(GithubApi::class.java)
+        rickAndMortyApi = retrofitRickAndMorty.create(RickAndMortyApi::class.java)
     }
 
     private fun httpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -61,7 +62,7 @@ class App : Application() {
     }
 
     companion object {
-        const val BASE_URL = "https://rickandmortyapi.com/api/"
+        const val BASE_RICK_AND_MORTY_URL = "https://rickandmortyapi.com/api/"
         const val TIMEOUT = 300L
 
         private var mInstance: App? = null

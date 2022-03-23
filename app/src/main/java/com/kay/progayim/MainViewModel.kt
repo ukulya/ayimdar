@@ -62,8 +62,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun deleteEpisodes(){
-        deleteCharactersUseCase()
-            .subscribe()
+        compositeDisposable.add(
+            deleteCharactersUseCase()
+                .subscribe()
+        )
     }
 
     fun clearEvents() {

@@ -1,4 +1,4 @@
-package com.kay.progayim
+package com.kay.progayim.data.storage
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.kay.progayim.data.models.CharacterEntity
 import io.reactivex.Completable
 
 @Dao

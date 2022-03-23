@@ -1,10 +1,15 @@
-package com.kay.progayim
+package com.kay.progayim.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.kay.progayim.*
+import com.kay.progayim.data.repo.RickAndMortyRepo
+import com.kay.progayim.data.models.CharacterEntity
+import com.kay.progayim.domain.use_cases.DeleteCharactersUseCase
+import com.kay.progayim.domain.use_cases.GetCharacterUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.net.UnknownHostException

@@ -1,5 +1,6 @@
-package com.kay.progayim
+package com.kay.progayim.domain.use_cases
 
+import com.kay.progayim.data.repo.RickAndMortyRepo
 import io.reactivex.Completable
 
 class DeleteCharactersUseCase(

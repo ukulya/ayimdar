@@ -1,4 +1,4 @@
-package com.kay.progayim
+package com.kay.progayim.data.models
 
 data class ResponseDto(
     val results: List<CharacterDto>

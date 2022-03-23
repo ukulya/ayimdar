@@ -1,4 +1,4 @@
-package com.kay.progayim
+package com.kay.progayim.data.models
 
 data class RepoResult(
     val items: List<Item>

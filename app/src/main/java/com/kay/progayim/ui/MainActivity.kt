@@ -1,12 +1,9 @@
-package com.kay.progayim
+package com.kay.progayim.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import com.kay.progayim.R
 import com.kay.progayim.databinding.ActivityMainBinding
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

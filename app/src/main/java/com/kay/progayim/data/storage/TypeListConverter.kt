@@ -1,4 +1,4 @@
-package com.kay.progayim
+package com.kay.progayim.data.storage
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

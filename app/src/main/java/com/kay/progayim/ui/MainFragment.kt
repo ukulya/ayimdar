@@ -1,4 +1,4 @@
-package com.kay.progayim
+package com.kay.progayim.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.kay.progayim.R
 import com.kay.progayim.databinding.FragmentMainBinding
 import com.kay.progayim.extensions.showToast
 

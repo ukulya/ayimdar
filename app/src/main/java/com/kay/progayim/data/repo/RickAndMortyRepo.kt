@@ -1,5 +1,9 @@
-package com.kay.progayim
+package com.kay.progayim.data.repo
 
+import com.kay.progayim.data.models.CharacterEntity
+import com.kay.progayim.data.models.ResponseDto
+import com.kay.progayim.data.network.RickAndMortyApi
+import com.kay.progayim.data.storage.CharacterDao
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers

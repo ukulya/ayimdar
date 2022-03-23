@@ -1,5 +1,7 @@
-package com.kay.progayim
+package com.kay.progayim.domain.use_cases
 
+import com.kay.progayim.data.repo.RickAndMortyRepo
+import com.kay.progayim.data.models.CharacterEntity
 import com.kay.progayim.extensions.toCharacterEntity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

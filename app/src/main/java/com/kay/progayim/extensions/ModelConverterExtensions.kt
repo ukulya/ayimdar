@@ -1,7 +1,7 @@
 package com.kay.progayim.extensions
 
-import com.kay.progayim.CharacterDto
-import com.kay.progayim.CharacterEntity
+import com.kay.progayim.data.models.CharacterDto
+import com.kay.progayim.data.models.CharacterEntity
 
 
 fun CharacterDto.toCharacterEntity(): CharacterEntity {

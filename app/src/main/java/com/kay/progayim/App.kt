@@ -4,6 +4,9 @@ import android.app.Application
 import android.util.Log
 import androidx.room.Room
 import androidx.viewbinding.BuildConfig
+import com.kay.progayim.data.storage.AppDatabase
+import com.kay.progayim.data.network.GithubApi
+import com.kay.progayim.data.network.RickAndMortyApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,7 +27,6 @@ class App : Application() {
 
         database = Room.databaseBuilder(this, AppDatabase::class.java, "database")
             .fallbackToDestructiveMigration()
-//            .allowMainThreadQueries()
             .build()
 
         val okHttpClient = OkHttpClient.Builder()

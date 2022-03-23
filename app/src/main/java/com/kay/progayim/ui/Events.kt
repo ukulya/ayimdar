@@ -1,4 +1,4 @@
-package com.kay.progayim
+package com.kay.progayim.ui
 
 import androidx.annotation.StringRes
 

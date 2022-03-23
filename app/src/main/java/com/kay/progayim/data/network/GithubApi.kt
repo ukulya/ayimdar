@@ -1,5 +1,7 @@
-package com.kay.progayim
+package com.kay.progayim.data.network
 
+import com.kay.progayim.data.models.Item
+import com.kay.progayim.data.models.RepoResult
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.http.GET

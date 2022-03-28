@@ -1,4 +1,4 @@
-package com.kay.progayim.ui
+package com.kay.progayim.ui.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -10,6 +10,8 @@ import com.kay.progayim.data.repo.RickAndMortyRepo
 import com.kay.progayim.data.models.CharacterEntity
 import com.kay.progayim.domain.use_cases.DeleteCharactersUseCase
 import com.kay.progayim.domain.use_cases.GetCharacterUseCase
+import com.kay.progayim.domain.use_cases.GetCharactersAsLiveDataUseCase
+import com.kay.progayim.ui.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.net.UnknownHostException
@@ -27,8 +29,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val deleteCharactersUseCase = DeleteCharactersUseCase(rickAndMortyRepo)
 
-    val charactersLiveData: LiveData<List<CharacterEntity>> =
-        getApplication<App>().database.characterDao().getAll()
+    private val getCharactersAsLiveUseCase = GetCharactersAsLiveDataUseCase(rickAndMortyRepo)
+
+    val charactersLiveData: LiveData<List<CharacterEntity>> = getCharactersAsLiveUseCase()
 
     val episodesCounterViaMap: LiveData<Int> = Transformations.map(charactersLiveData) {
         if (it.isEmpty()) 0 else it[0].episode.count()
@@ -42,12 +45,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         loadCharacters()
     }
 
-    private fun loadCharacters() {
-        _event.value = Event.ShowLoadingToast
+    fun loadCharacters() {
+        _event.value = Event.ShowLoading
         compositeDisposable.add(
             getCharacterUseCase()
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate { _event.value = Event.ShowFinishedLoadingToast }
+                .doOnTerminate { _event.value = Event.StopLoading }
                 .subscribe({}, {
                     handleError(it)
                 })
@@ -75,6 +78,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun clearEvents() {
         _event.value = null
+    }
+
+    fun getCharacterByIndex(index: Int): CharacterEntity? {
+        return charactersLiveData.value?.get(index)
     }
 
 }

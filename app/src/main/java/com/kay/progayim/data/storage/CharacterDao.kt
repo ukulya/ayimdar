@@ -9,6 +9,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.kay.progayim.data.models.CharacterEntity
 import io.reactivex.Completable
+import io.reactivex.Single
 
 @Dao
 interface CharacterDao {
@@ -17,7 +18,7 @@ interface CharacterDao {
     fun getAll(): LiveData<List<CharacterEntity>>
 
     @Query("SELECT * FROM CharacterEntity WHERE id = :id")
-    fun getById(id: Long?): CharacterEntity
+    fun getById(id: Long?): Single<CharacterEntity>
 
     @Insert
     fun insert(character: CharacterEntity): Long

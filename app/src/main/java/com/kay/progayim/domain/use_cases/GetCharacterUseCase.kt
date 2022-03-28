@@ -12,7 +12,7 @@ class GetCharacterUseCase(
     operator fun invoke(): Observable<Unit> {
         return rickAndMortyRepo.getCharacters()
             .map {
-                Thread.sleep(5000)
+                Thread.sleep(3000)
                 it
             }
             .map {

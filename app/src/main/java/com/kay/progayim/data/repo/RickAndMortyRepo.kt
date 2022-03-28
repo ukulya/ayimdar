@@ -6,6 +6,7 @@ import com.kay.progayim.data.network.RickAndMortyApi
 import com.kay.progayim.data.storage.CharacterDao
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 class RickAndMortyRepo(
@@ -26,4 +27,11 @@ class RickAndMortyRepo(
         return characterDao.deleteAll()
             .subscribeOn(Schedulers.io())
     }
+
+    fun getCharacterById(id: Long): Single<CharacterEntity> {
+        return characterDao.getById(id)
+            .subscribeOn(Schedulers.io())
+    }
+
+    fun getCharactersAsLive() = characterDao.getAll()
 }

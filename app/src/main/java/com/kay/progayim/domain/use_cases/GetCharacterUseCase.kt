@@ -17,7 +17,7 @@ class GetCharacterUseCase(
             }
             .map {
                 val listEp = mutableListOf<CharacterEntity>()
-                it.results.forEach {
+                it.forEach {
                     listEp.add(it.toCharacterEntity())
                 }
                 listEp.toList()

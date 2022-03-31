@@ -5,13 +5,15 @@ data class RepoResult(
 )
 
 data class Item(
-    val id: Long?,
+    val char_id: Long?,
     val name: String?,
-    val fullName: String?,
-    val owner: Owner,
-    val private: Boolean,
-    val htmlUrl: String?,
-    val description: String?
+    val birthday: String?,
+//    val owner: Owner,
+    val img: Boolean,
+    val status: String?,
+    val nickname: String?,
+    val portrayed: String?,
+    val category: String?
 )
 
-data class Owner(val login: String?, val id: Long?, val avatarUrl: String?)
+//data class Owner(val login: String?, val id: Long?, val avatarUrl: String?)

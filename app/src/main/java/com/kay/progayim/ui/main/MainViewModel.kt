@@ -34,7 +34,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val charactersLiveData: LiveData<List<CharacterEntity>> = getCharactersAsLiveUseCase()
 
     val episodesCounterViaMap: LiveData<Int> = Transformations.map(charactersLiveData) {
-        if (it.isEmpty()) 0 else it[0].episode.count()
+        if (it.isEmpty()) 0 else 1
     }
 
     private val _event = MutableLiveData<Event?>()

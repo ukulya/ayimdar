@@ -1,7 +1,7 @@
 package com.kay.progayim.data.repo
 
 import com.kay.progayim.data.models.CharacterEntity
-import com.kay.progayim.data.models.ResponseDto
+import com.kay.progayim.data.models.CharacterDto
 import com.kay.progayim.data.network.RickAndMortyApi
 import com.kay.progayim.data.storage.CharacterDao
 import io.reactivex.Completable
@@ -14,7 +14,7 @@ class RickAndMortyRepo(
     private val characterDao: CharacterDao
 ) {
 
-    fun getCharacters(): Observable<ResponseDto> {
+    fun getCharacters(): Observable<List<CharacterDto>> {
         return rickAndMortyApi.getCharacters()
             .subscribeOn(Schedulers.io())
     }

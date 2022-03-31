@@ -64,7 +64,7 @@ class App : Application() {
     }
 
     companion object {
-        const val BASE_RICK_AND_MORTY_URL = "https://rickandmortyapi.com/api/"
+        const val BASE_RICK_AND_MORTY_URL = "https://breakingbadapi.com/api/"
         const val TIMEOUT = 300L
 
         private var mInstance: App? = null

@@ -13,7 +13,7 @@ class CharacterViewHolder(
 
     fun bind(item: CharacterEntity) {
         with(binding){
-            Glide.with(itemView.context).load(item.image).into(ivImage)
+            Glide.with(itemView.context).load(item.img).into(ivImage)
             tvName.text = item.name
         }
     }

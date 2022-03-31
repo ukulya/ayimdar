@@ -17,7 +17,7 @@ interface CharacterDao {
     @Query("SELECT * FROM CharacterEntity")
     fun getAll(): LiveData<List<CharacterEntity>>
 
-    @Query("SELECT * FROM CharacterEntity WHERE id = :id")
+    @Query("SELECT * FROM CharacterEntity WHERE char_id = :id")
     fun getById(id: Long?): Single<CharacterEntity>
 
     @Insert

@@ -96,7 +96,7 @@ class MainFragment: Fragment(), CharacterAdapter.Listener {
 
     override fun onClick(index: Int) {
         vm.getCharacterByIndex(index)?.let {
-            fragmentListener.openFragment(DetailsFragment.newInstance(it.id))
+            fragmentListener.openFragment(DetailsFragment.newInstance(it.char_id))
         }
     }
 }

@@ -5,6 +5,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface RickAndMortyApi {
-    @GET("character")
+    @GET("characters")
     fun getCharacters(): Observable<List<CharacterDto>>
 }

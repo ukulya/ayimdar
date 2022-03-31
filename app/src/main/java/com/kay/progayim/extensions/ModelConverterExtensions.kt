@@ -7,15 +7,14 @@ import com.kay.progayim.data.models.CharacterEntity
 fun CharacterDto.toCharacterEntity(): CharacterEntity {
 
     return CharacterEntity(
-        id = this.id,
+        char_id = this.char_id,
         name = this.name,
+        birthday = this.birthday,
+        img = this.img,
         status = this.status,
-        species = this.species,
-        type = this.type,
-        gender = this.gender,
-        image = this.image,
-        url = this.url,
-        created = this.created,
-        episode = this.episode,
+        nickname = this.nickname,
+        portrayed = this.portrayed,
+        category = this.category,
+
     )
 }

@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.kay.progayim.data.models.CharacterEntity
 
 @TypeConverters(TypeListConverter::class)
-@Database(entities = [CharacterEntity::class], version = 2)
+@Database(entities = [CharacterEntity::class], version = 3) // если приложение не закрывается - то просто поднимаем версию
 abstract class AppDatabase: RoomDatabase()  {
 
     abstract fun characterDao(): CharacterDao
